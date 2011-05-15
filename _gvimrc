@@ -1,3 +1,6 @@
+"整理中
+
+
 """""""""""""""""""""""
 "アプリフォルダから移動
 """""""""""""""""""""""
@@ -17,8 +20,8 @@ if has('win32')
  if has('kaoriya')
    set ambiwidth=auto
  endif
-elseif has('mac')
-set guifont=Osaka－等幅:h14
+"elseif has('mac')
+"set guifont=Osaka－等幅:h14
 elseif has('xfontset')
  " UNIX用 (xfontsetを使用)
  set guifontset=a14,r14,k14
