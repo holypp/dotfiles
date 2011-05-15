@@ -1,6 +1,7 @@
-~/dotfiles/vimfiles/bundle
-vimfiles/bundle
-_gvimrc
+/vimfiles/bundle/
+/_gvimrc
+#test
+
 
 
 
