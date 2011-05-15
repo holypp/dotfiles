@@ -3,8 +3,6 @@
 
 
 
-
-
 "PATH
 let $PATH = $PATH . ':/opt/local/bin' 
 
