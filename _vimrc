@@ -1,5 +1,8 @@
 "整理中
 
+
+
+
 "PATH
 let $PATH = $PATH . ':/opt/local/bin' 
 
