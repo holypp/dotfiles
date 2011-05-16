@@ -1,4 +1,4 @@
-"整理中
+"整理中aaaaaa
 
 "PATH
 let $PATH = $PATH . ':/opt/local/bin' 
