@@ -1,38 +1,38 @@
-:set nextpattern=^\Ÿ,^\‘±‚«,\bnext,^>$,^(>>\|??)$,^(>\|??),(>\|??),\bmore\b$
-:set previouspattern=^\‘O,^\–ß,\bprev|previous\b,^<$,^(<<\|??)$,^(<\|??),(<\|??)$
+:set nextpattern=^\æ¬¡,^\ç¶šã,\bnext,^>$,^(>>\|??)$,^(>\|??),(>\|??),\bmore\b$
+:set previouspattern=^\å‰,^\æˆ»,\bprev|previous\b,^<$,^(<<\|??)$,^(<\|??),(<\|??)$
 
-"@@@@@@@@@@ Šî–{İ’è
+"@@@@@@@@@@ åŸºæœ¬è¨­å®š
 
-"input—v‘f‚Éfocus‚ğ’D‚í‚ê‚È‚¢
+"inputè¦ç´ ã«focusã‚’å¥ªã‚ã‚Œãªã„
 set focuscontent
 set wildoptions=auto
 
-"ZZ‚Åquit‚È‚Ì‚ğ–³Œø‚É‚·‚éB
+"ZZã§quitãªã®ã‚’ç„¡åŠ¹ã«ã™ã‚‹ã€‚
 noremap ZZ <NOP>
 set titlestring=Firefox
-"ŒŸõ‚ğ‹­’²
+"æ¤œç´¢ã‚’å¼·èª¿
 set hlsearch
-" s‚ÅC“o˜^‚µ‚Ä‚éƒL[ƒ[ƒh‚Ì•âŠ®(g‚ÅGoogle‚Æ‚©)Cl‚Å:open‚È‚Ç‚Ì•âŠ®‚ğƒAƒhƒŒƒXƒo[‚Ì•âŠ®‚ª‰Â”\
+" sã§ï¼Œç™»éŒ²ã—ã¦ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®è£œå®Œ(gã§Googleã¨ã‹)ï¼Œlã§:openãªã©ã®è£œå®Œã‚’ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒãƒ¼ã®è£œå®ŒãŒå¯èƒ½
 set complete=sl
 set history=1000
 
 
 
-"ƒL[ƒ}ƒbƒvİ’è
+"ã‚­ãƒ¼ãƒãƒƒãƒ—è¨­å®š
 
-"j/k‚ÌˆÚ“®—Ê‚ğ2”{‚É
+"j/kã®ç§»å‹•é‡ã‚’2å€ã«
 map j 2<C-e>
 map k 2<C-y>
-"<BS>‚Åu–ß‚év
+"<BS>ã§ã€Œæˆ»ã‚‹ã€
 map <BS> H
-"h/l‚Åƒ^ƒuˆÚ“®
+"h/lã§ã‚¿ãƒ–ç§»å‹•
 map h <C-p>
 map l <C-n>
 "map <C-r> :source ~/_vimperatorrc<CR>
 map <C-R> :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/_vimperatorrc<CR>
 
 
-"@@@@@@@@@@ ƒvƒ‰ƒOƒCƒ“İ’è
+"@@@@@@@@@@ ãƒ—ãƒ©ã‚°ã‚¤ãƒ³è¨­å®š
 
 "feedsomekeys_2
 autocmd LocationChange .* :fmapc
