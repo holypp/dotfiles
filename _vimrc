@@ -1,5 +1,5 @@
 "整理中
-
+"
 "PATH
 let $PATH = $PATH . ':/opt/local/bin' 
 
@@ -128,8 +128,12 @@ set list
 map <Up> gk
 map <Down> gj
 imap <c-j> <esc>
+nnoremap <Space>sv   :<C-u>source $MYVIMRC<CR>
+nnoremap <Space>sg   :<C-u>source $MYGVIMRC<CR>
+nnoremap <Space>ev   :<C-u>edit   $MYVIMRC<CR>
+nnoremap <Space>eg   :<C-u>edit   $MYGVIMRC<CR>
 
- " tab 操作
+" tab
 map <c-h> gT
 map <c-l> gt
 map [TABCMD]  <nop>
@@ -144,14 +148,17 @@ map <silent> [TABCMD]c :tabclose<cr>
 map <silent> [TABCMD]o :tabonly<cr>
 map <silent> [TABCMD]s :tabs<cr>
 
+"括弧
 inoremap ( ()<Left>
 inoremap <expr> ) ClosePair(')')
 inoremap { {}<Left>
 inoremap <expr> } ClosePair('}')
 inoremap [ []<Left>
 inoremap <expr> ] ClosePair(']')
-inoremap <bar> <bar><bar><Left>
-function ClosePair(char)
+inoremap ><bar> ><bar><bar><<Left><Left>
+inoremap > >> 
+
+function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
     else
