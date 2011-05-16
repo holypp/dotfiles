@@ -1,6 +1,5 @@
 "整理中
 
-
 """""""""""""""""""""""
 "アプリフォルダから移動
 """""""""""""""""""""""
@@ -109,8 +108,5 @@ if has('printer')
    "set printfont=MS_Gothic:h12:cSHIFTJIS
  endif
 endif
-
-
-
 
 
