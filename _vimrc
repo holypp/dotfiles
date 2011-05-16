@@ -1,23 +1,28 @@
-"整理中aaaaaa
+"整理中
 
 "PATH
 let $PATH = $PATH . ':/opt/local/bin' 
 
+"vundle
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/vundle.git/ 
-call vundle#rc()
+if has("win32") || has("win64")
+  set rtp+=~/vimfiles/vundle.git/ 
+  call vundle#rc('~/vimfiles/bundle/')
+else
+  set rtp+=~/.vim/vundle.git/ 
+  call vundle#rc()
+endif
+
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 filetype plugin indent on     " required!
 
-
 "vimproc
 let g:ref_use_vimproc = 0
-
 
 "ref-alc
 let g:ref_alc_cmd = 'w3m -dump %s'
@@ -28,17 +33,17 @@ let g:ref_alc_encoding = 'UTF-8'
 let g:ref_cache_dir = 'g:\cache\'   " ローカルにキャッシュ
 
 if exists('*ref#register_detection')
-call ref#register_detection('_', 'alc') " filetypeが分からんならalc
+call ref#register_detection('_', 'alc') " filetype不明な場合はalcを使う
 endif
 
-"#pathogen
+"#pathogen -> vundleに移行
 "call pathogen#runtime_append_all_bundles()
 
 " vimshell
 let g:VimShell_EnableInteractive = 1
 
-"neoconplcache
-let g:NeoComplCache_EnableAtStartup = 1
+"neocomplcache
+"let g:NeoComplCache_EnableAtStartup = 1
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -59,7 +64,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+    \ }
 
 " AutoComplPop like behavior.
 "let g:neocomplcache_enable_auto_select = 1
@@ -79,7 +84,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
@@ -112,12 +117,17 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-" キーバインド
 
+"ファイルエンコード
+set fenc=utf-8
+set nobackup
+set number
+set list
+
+" キーバインド
 map <Up> gk
 map <Down> gj
 imap <c-j> <esc>
-
 
  " tab 操作
 map <c-h> gT
@@ -133,16 +143,7 @@ map <silent> [TABCMD]e :tabedit<cr>
 map <silent> [TABCMD]c :tabclose<cr>
 map <silent> [TABCMD]o :tabonly<cr>
 map <silent> [TABCMD]s :tabs<cr>
-:set nobackup
-:set number
-:set list
-"highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
-"au BufRead,BufNew * match JpSpace /　/
 
-"ファイルエンコード
-set fenc=utf-8
-
-"let g:neocomplcache_enable_at_startup = 1
 inoremap ( ()<Left>
 inoremap <expr> ) ClosePair(')')
 inoremap { {}<Left>
@@ -157,4 +158,7 @@ function ClosePair(char)
         return a:char
     endif
 endf
+
+
+
 
