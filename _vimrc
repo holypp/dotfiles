@@ -36,7 +36,7 @@ if exists('*ref#register_detection')
 call ref#register_detection('_', 'alc') " filetype不明な場合はalcを使う
 endif
 
-"#pathogen -> vundleに移行
+"#pathogen -> vundleに移行のため削除
 "call pathogen#runtime_append_all_bundles()
 
 " vimshell
@@ -117,21 +117,23 @@ let g:neocomplcache_enable_at_startup = 1
     "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
     
-    "ファイルエンコード
+"set
 set fenc=utf-8
 set nobackup
 set noswapfile
 set number
 set list
 
-" キーバインド
+"map
 map <Up> gk
 map <Down> gj
 imap <c-j> <esc>
-nnoremap <Space>sv   :<C-u>source $MYVIMRC<CR>
-nnoremap <Space>sg   :<C-u>source $MYGVIMRC<CR>
+
+"rc
 nnoremap <Space>ev   :<C-u>edit   $MYVIMRC<CR>
 nnoremap <Space>eg   :<C-u>edit   $MYGVIMRC<CR>
+nnoremap <Space>sv   :<C-u>source $MYVIMRC<CR>
+nnoremap <Space>sg   :<C-u>source $MYGVIMRC<CR>
 
 " tab
 map <c-h> gT
@@ -148,15 +150,15 @@ map <silent> [TABCMD]c :tabclose<cr>
 map <silent> [TABCMD]o :tabonly<cr>
 map <silent> [TABCMD]s :tabs<cr>
 
-"括弧
+"pair
 inoremap ( ()<Left>
 inoremap <expr> ) ClosePair(')')
 inoremap { {}<Left>
 inoremap <expr> } ClosePair('}')
 inoremap [ []<Left>
 inoremap <expr> ] ClosePair(']')
+inoremap <bar> <bar><bar><Left>
 inoremap ><bar> ><bar><bar><<Left><Left>
-inoremap > >> 
 
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
@@ -165,7 +167,5 @@ function! ClosePair(char)
         return a:char
     endif
 endf
-
-
 
 
