@@ -29,9 +29,9 @@ endif
 " ウインドウに関する設定:
 "
 " ウインドウの幅
-set columns=120
+set columns=150
 " ウインドウの高さ
-set lines=50
+set lines=60
 " コマンドラインの高さ(GUI使用時)
 set cmdheight=2
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
