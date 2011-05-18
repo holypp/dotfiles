@@ -1,6 +1,5 @@
 
 
-
 "整理中
 "
 "PATH
@@ -207,10 +206,10 @@ map <Down> gj
 imap <c-j> <esc>
 
 "rc
-nnoremap <C-e>v   :<C-u>edit   $MYVIMRC<CR>
-nnoremap <C-e>g   :<C-u>edit   $MYGVIMRC<CR>
-nnoremap <C-s>v   :<C-u>source $MYVIMRC<CR>
-nnoremap <C-s>g   :<C-u>source $MYGVIMRC<CR>
+nnoremap :ev   :<C-u>edit   $MYVIMRC<CR>
+nnoremap :eg   :<C-u>edit   $MYGVIMRC<CR>
+nnoremap :ev   :<C-u>source $MYVIMRC<CR>
+nnoremap :eg   :<C-u>source $MYGVIMRC<CR>
 
 " tab
 map <c-h> gT
