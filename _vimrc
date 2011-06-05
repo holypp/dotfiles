@@ -201,30 +201,31 @@ set number
 set list
 
 "map
-map <Up> gk
-map <Down> gj
+noremap <Up> gk
+noremap <Down> gj
 imap <c-j> <esc>
+imap <c-;> <Return>
 
 "rc
 nnoremap :ev   :<C-u>edit   $MYVIMRC<CR>
 nnoremap :eg   :<C-u>edit   $MYGVIMRC<CR>
-nnoremap :ev   :<C-u>source $MYVIMRC<CR>
-nnoremap :eg   :<C-u>source $MYGVIMRC<CR>
+nnoremap :sv   :<C-u>source $MYVIMRC<CR>
+nnoremap :sg   :<C-u>source $MYGVIMRC<CR>
 
 " tab
-map <c-h> gT
-map <c-l> gt
-map [TABCMD]  <nop>
-map t [TABCMD]
-map <silent> [TABCMD]f :tabfirst<cr>
-map <silent> [TABCMD]l :tablast<cr>
-map <silent> [TABCMD]n :tabnext<cr>
-map <silent> [TABCMD]N :tabNext<cr>
-map <silent> [TABCMD]p :tabprevious<cr>
-map <silent> [TABCMD]e :tabedit<cr>
-map <silent> [TABCMD]c :tabclose<cr>
-map <silent> [TABCMD]o :tabonly<cr>
-map <silent> [TABCMD]s :tabs<cr>
+noremap <c-h> gT
+noremap <c-l> gt
+noremap [TABCMD]  <nop>
+noremap t [TABCMD]
+noremap <silent> [TABCMD]f :tabfirst<cr>
+noremap <silent> [TABCMD]l :tablast<cr>
+noremap <silent> [TABCMD]n :tabnext<cr>
+noremap <silent> [TABCMD]N :tabNext<cr>
+noremap <silent> [TABCMD]p :tabprevious<cr>
+noremap <silent> [TABCMD]e :tabedit<cr>
+noremap <silent> [TABCMD]c :tabclose<cr>
+noremap <silent> [TABCMD]o :tabonly<cr>
+noremap <silent> [TABCMD]s :tabs<cr>
 
 "pair
 inoremap ( ()<Left>
