@@ -204,7 +204,8 @@ set list
 noremap <Up> gk
 noremap <Down> gj
 imap <c-j> <esc>
-imap <c-;> <Return>
+inoremap ; <Return>
+inoremap :: ;
 
 "rc
 nnoremap :ev   :<C-u>edit   $MYVIMRC<CR>
@@ -216,7 +217,7 @@ nnoremap :sg   :<C-u>source $MYGVIMRC<CR>
 noremap <c-h> gT
 noremap <c-l> gt
 noremap [TABCMD]  <nop>
-noremap t [TABCMD]
+map t [TABCMD]
 noremap <silent> [TABCMD]f :tabfirst<cr>
 noremap <silent> [TABCMD]l :tablast<cr>
 noremap <silent> [TABCMD]n :tabnext<cr>
