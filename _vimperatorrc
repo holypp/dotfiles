@@ -1,13 +1,12 @@
 :set nextpattern=^\次,^\続き,\bnext,^>$,^(>>\|??)$,^(>\|??),(>\|??),\bmore\b$
 :set previouspattern=^\前,^\戻,\bprev|previous\b,^<$,^(<<\|??)$,^(<\|??),(<\|??)$
 
-"@@@@@@@@@@ 基本設定
-
+"基本設定
 "input要素にfocusを奪われない
 set focuscontent
 set wildoptions=auto
 
-"ZZでquitなのを無効にする。
+"ZZでquitを無効
 noremap ZZ <NOP>
 set titlestring=Firefox
 "検索を強調
@@ -16,11 +15,8 @@ set hlsearch
 set complete=sl
 set history=1000
 
-
-
 "キーマップ設定
-
-"j/kの移動量を2倍に
+"j/kの移動量を2倍
 map j 2<C-e>
 map k 2<C-y>
 "<BS>で「戻る」
@@ -28,57 +24,42 @@ map <BS> H
 "h/lでタブ移動
 map h <C-p>
 map l <C-n>
-"map <C-r> :source ~/_vimperatorrc<CR>
+
 map <C-R> :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/_vimperatorrc<CR>
 
+"vimp3
+set hintchars = qjklasdfuiower
 
-"@@@@@@@@@@ プラグイン設定
-
-"feedsomekeys_2
-autocmd LocationChange .* :fmapc
-autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap j k s a p o v c <Space> <S-Space> z b < > g Z
-"autocmd LocationChange 'mail\.google\.com/mail' :fmap -depth 4 c / j k n p o u e x s r a # [ ] z ? g gi gs gt gd ga gc
-autocmd LocationChange 'mail\.google\.com/mail' :fmap c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
-autocmd LocationChange 'www\.google\.com/calendar' :fmap! -vkey keydown a w m x c e <Del> / + q s ?
-autocmd LocationChange 'www\.google\.co\.jp' :fmap j k v p o : s ? + i
-autocmd LocationChange 'readitlaterlist\.com' :fmap j k v p o : s ? + i
-
-
-
-
-
-
+"プラグイン設定
+" Greasemonkey 0.9.1でwindowを共通にする。（必要性は一時的？"
 javascript <<EOF
-    liberator.globalVariables.migrate_elements = [
-        {
-            // favicon of awesome bar
-            id:    'page-proxy-stack',
-            dest:  'liberator-statusline',
-            after: false,
-        },
-        {
-    //Readitlater add-button
-            id:    'RIL_urlbar_add',
-            dest:  'security-button',
-            after: true,
-        },
-        {
-    //Readitlater cancel-button
-            id:    'RIL_urlbar_mark',
-            dest:  'security-button',
-            after: true,
-        }, 
-        {
-    //Readitlater watch-button
-            id:    'RIL_toolbar_button',
-            dest:  'security-button',
-            after: true,
-        }, 
-        ];
+autocommands.add('VimperatorEnter', '.*',
+  function() {
+    let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
+    if (gm) {
+      gm = gm.getService().wrappedJSObject;
+      if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
+          gm.injectScripts = liberator.eval(
+              gm.injectScripts.toSource()
+                  .replace(/(?=var firebugConsole)/,
+                          'var sharedWindow = {};' +
+                          'sharedWindow.window = sharedWindow;' +
+                          'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);')
+                  .replace(/(?=sandbox\.__proto__)/, ' sandbox.window = sharedWindow;'),
+              gm.injectScripts);
+      }
+    }
+  });
 EOF
 
 
+"feedsomekeys_3
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c z b < > g Z <Space> <S-Space> i q w G U u
+lazy fmaps -u='mail\.google\.com/calendar/.*' a w m x c e <Del> / + q s ?
+lazy fmaps -u='www\.google\.co\.jp/.*' j k v p o : s ? + i
 
-
-
-
+"hatebu
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this})
