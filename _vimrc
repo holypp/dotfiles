@@ -1,6 +1,6 @@
 "整理中
-"
-"
+nnoremap ; :
+nnoremap : ;
 "プラグイン
 "vundle
 set nocompatible               " be iMproved
@@ -38,12 +38,17 @@ endif
 "kind action source:ua
 " 入力モードで開始
 let g:unite_enable_start_insert=1
-":Unite
-noremap :ub :Unite buffer<CR>
-noremap :uf :UniteWithBufferDir -buffer-name=files file<CR>
-noremap :ur :Unite -buffer-name=register register<CR>
-noremap :ufm :Unite file_mru<CR>
-noremap :uall :UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file source<CR>
+noremap :um :<C-u>Unite file_mru -buffer-name=file_mru<CR>
+noremap :ur :<C-u>Unite register -buffer-name=register<CR>
+noremap :ub :<C-u>Unite buffer -buffer-name=buffer<CR>
+"file_Current
+noremap :ufc :<C-u>Unite file -buffer-name=file<CR>
+noremap :ufcr :<C-u>Unite file_rec -buffer-name=file_rec<CR>
+noremap :uallc :<C-u>Unite buffer file_mru bookmark file source -buffer-name=all<CR>
+"file_current
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+noremap :uffr :<C-u>UniteWithBufferDir file_rec -buffer-name=file_rec<CR>
+noremap :uallf :<C-u>UniteWithBufferDir buffer file_mru bookmark file source -buffer-name=all<CR>
 
 " ウィンドウを上下に分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-I> unite#do_action('split')
@@ -167,7 +172,7 @@ nnoremap :sg   :<C-u>source $MYGVIMRC<CR>
 " tab
 noremap <c-h> gT
 noremap <c-l> gt
-noremap [TABCMD]  <nop>
+"noremap [TABCMD]  <nop>
 map t [TABCMD]
 noremap <silent> [TABCMD]f :tabfirst<cr>
 noremap <silent> [TABCMD]l :tablast<cr>
