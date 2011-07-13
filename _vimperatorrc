@@ -31,7 +31,7 @@ map <C-R> :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/_vimperatorrc<CR>
 set hintchars = qjklasdfuiower
 
 "プラグイン設定
-" Greasemonkey 0.9.1でwindowを共通にする。（必要性は一時的？"
+" Greasemonkey 0.9.xでwindowを共通にする
 javascript <<EOF
 autocommands.add('VimperatorEnter', '.*',
   function() {
@@ -55,11 +55,11 @@ EOF
 
 "feedsomekeys_3
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
-lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c z b < > g Z <Space> <S-Space> i q w G U u
-lazy fmaps -u='mail\.google\.com/calendar/.*' a w m x c e <Del> / + q s ?
+lazy fmaps -u='www\.google\.com/calendar/.*' a w m x c e <Del> / + q s ? A W M X C E
+lazy fmaps -u='mail\.google\.com/mail/.*' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='www\.google\.co\.jp/.*' j k v p o : s ? + i
 
 "hatebu
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this})
+
+
