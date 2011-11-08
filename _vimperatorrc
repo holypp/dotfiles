@@ -35,13 +35,15 @@ set hintchars = qjklasdfuiower
 javascript <<EOF
 autocommands.add('VimperatorEnter', '.*',
   function() {
-    let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
+    let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'] ||
+                 Components.classes['@scriptish.erikvold.com/scriptish-service;1'];
     if (gm) {
       gm = gm.getService().wrappedJSObject;
       if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
           gm.injectScripts = liberator.eval(
               gm.injectScripts.toSource()
-                  .replace(/(?=var firebugConsole)/,
+                "  .replace(/(?=var firebugConsole)/,
+                   .replace(/(?=(?:var|let) delays|(?:firebug|fb)Console)/,
                           'var sharedWindow = {};' +
                           'sharedWindow.window = sharedWindow;' +
                           'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);')
@@ -52,12 +54,12 @@ autocommands.add('VimperatorEnter', '.*',
   });
 EOF
 
-
 "feedsomekeys_3
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-lazy fmaps -u='www\.google\.com/calendar/.*' a w m x c e <Del> / + q s ? A W M X C E
 lazy fmaps -u='mail\.google\.com/mail/.*' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='www\.google\.co\.jp/.*' j k v p o : s ? + i
+lezy fmaps -u='www\.google\.com/calendar/.*' a w m x c e <Del> / + q s ? A W M X C E
+lazy fmaps -u='livedoor\.com/reader' j k s a p o v c z b < > Z <Space> <S-Space> i q w G U u
 
 "hatebu
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this})

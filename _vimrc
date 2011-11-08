@@ -1,4 +1,17 @@
 "整理中
+"最近の変更
+
+" 無名レジスタに入るデータを、*レジスタにも入れる。
+:set clipboard+=unnamed
+" vim:set foldmethod=marker:
+:set foldmethod=marker
+" コメントの形式をスラッシュ2つの形式に変更
+":set commentstring=//%s
+" vim:set foldmethod=marker commentstring=//%s :
+
+"map
+noremap - $
+"
 nnoremap ; :
 nnoremap : ;
 "プラグイン
