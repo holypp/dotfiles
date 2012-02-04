@@ -1,3 +1,6 @@
+
+
+
 "整理中
 "最近の変更
 
@@ -27,6 +30,7 @@ else
   call vundle#rc()
 endif
 
+Bundle 'tpope/vim-rails'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
